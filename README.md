@@ -1,3 +1,74 @@
+I am preparing for a 45–60 minute live coding screen for a Principal Software Engineer / FDE role.
+
+My study guide is attached: Microsoft_FDE_Coding_Interview_Preparation_Guide.docx.
+
+Please act as an interviewer-focused coach. Optimize for:
+- clear Python implementation under live-screen conditions
+- thinking aloud: clarify → assumptions → plan → complexity → code → test → productionize
+- practical FDE/data engineering and reliable AI-agent systems
+- concise, incremental guidance rather than giving full solutions immediately
+
+## Current progress
+
+### Understood conceptually
+- Sliding window: longest substring without repeated characters.
+- Merge intervals: sort by start, compare current interval against `merged[-1]`, extend or append.
+- Tool-call validator architecture: server-owned versioned registry, schema + business + authorization + policy checks, confirmation for consequential writes, idempotency, structured errors, auditing, output validation/sanitization.
+
+### Still need implementation recall
+- Sliding window: re-code cold; pay attention to:
+  `last_seen[character] >= left_pointer`
+  and updating `last_seen` / `max_length` every iteration.
+- Merge intervals: re-code from a minimal outline; I may initially need a small syntax peek.
+- Graphs/workflows: BFS shortest path; topological sort / cycle detection.
+
+### Tool validator code status
+I wrote a functioning first draft but need to improve:
+- Separate server-owned registry from example calls.
+- Safely validate malformed envelope input before indexing.
+- Return early for invalid tool names / non-dict arguments.
+- Reject missing and unexpected arguments.
+- Avoid dependent checks after missing/type failures.
+- Treat bool as invalid for integer `limit`.
+- Return execution status such as `confirmation_required` for writes; validation success does not mean execute.
+
+### Deprioritized
+- Raw hand-coded hash join: I understand build → probe → classify, but it is usually built into SQL/Spark/pandas.
+- I still want one short reconciliation exercise focused on matched, left-only, right-only, duplicate keys, and field mismatches.
+
+## Remaining time
+- Friday: a couple hours.
+- Saturday + Sunday combined: 2–3 hours.
+- Monday: 4 hours.
+- Total: roughly 10–11 hours.
+
+## Time allocation
+| Area | Total time | Outcome |
+|---|---:|---|
+| Core recall: sliding window + merge intervals | 1 hr 15 min | Implement both from a minimal outline, without needing a full solution |
+| Graph/workflow recall | 1 hr 30 min | Be able to code and explain BFS plus topological sort/cycle detection |
+| Practical data exercises | 2 hr | Demonstrate FDE-style data handling: latest events, dedupe, logs/reconciliation |
+| Agent systems | 1 hr 30 min | Tighten validator code; explain an execution loop and safe-action gate |
+| Timed simulations | 2 hr | Practice the actual screen behavior under a clock |
+| Debugging + review + light Monday rehearsal | 1 hr 30 min | Improve recovery, testing, and verbal clarity |
+| Buffer / breaks / spillover | 1–2 hr | Use only where recall is weakest |
+
+## Coaching rules
+- Do not overemphasize LeetCode volume.
+- Start with the next highest-value practice item, not a broad curriculum recap.
+- Let me attempt code before showing a full solution.
+- When reviewing code, distinguish:
+  1. correctness,
+  2. edge cases,
+  3. interview communication,
+  4. production follow-ups.
+- For each exercise, ask me to state:
+  contract, assumptions, approach, key data structure/invariant, complexity, tests, and production changes.
+- Keep the plan realistic for the remaining hours.
+
+
+
+
 # My Flow
 You are ready to approach a new exercise with a reliable process:
 
